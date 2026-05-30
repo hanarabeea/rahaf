@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import CountdownTimer from "@/components/countdown-timer"
 import VenueMap from "@/components/venue-map"
@@ -55,8 +55,6 @@ interface ProAnimatedEngagementPageProps {
 
 export default function ProAnimatedEngagementPage({ onImageLoad, isActive = false }: ProAnimatedEngagementPageProps) {
   const [mounted, setMounted] = useState(false)
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const invitationVideoRef = useRef<HTMLVideoElement>(null)
   const { scrollYProgress } = useScroll()
   const { t } = useLanguage()
 
@@ -68,22 +66,7 @@ export default function ProAnimatedEngagementPage({ onImageLoad, isActive = fals
     setMounted(true)
   }, [])
 
-  // Only play the invitation video once the intro is done.
-  // Small delay lets React finish its DOM reconciliation before play() is called,
-  // avoiding the "play() interrupted because media was removed" race condition.
-  useEffect(() => {
-    if (!isActive) return
-    const id = setTimeout(() => {
-      const vid = invitationVideoRef.current
-      if (vid && vid.isConnected) {
-        vid.play().catch(() => {})
-      }
-    }, 50)
-    return () => clearTimeout(id)
-  }, [isActive])
-
   const handleImageLoad = () => {
-    setImageLoaded(true)
     onImageLoad?.()
   }
 
@@ -104,21 +87,17 @@ export default function ProAnimatedEngagementPage({ onImageLoad, isActive = fals
           className="w-full h-full relative z-10"
           variants={scaleIn}
         >
-          {/* Optimized Video that plays once and sticks on the last frame */}
+          {/* Invitation design image - preloaded before intro ends */}
           <div className="relative w-full h-full">
-            <video
-              ref={invitationVideoRef}
-              src="/invitation-design.mp4"
-              className="w-full h-full object-contain"
-              playsInline
-              muted
-              preload="auto"
-              onLoadedData={handleImageLoad}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain'
-              }}
+            <Image
+              src="/invitation-design.jpg"
+              alt="Invitation Design"
+              fill
+              priority
+              quality={90}
+              className="object-contain"
+              onLoad={handleImageLoad}
+              sizes="100vw"
             />
           </div>
         </motion.div>

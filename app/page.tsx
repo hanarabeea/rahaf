@@ -56,15 +56,14 @@ export default function Home() {
   }, [])
 
 
-  // Preload the main video
+  // Preload the invitation image while the intro video is still playing
   useEffect(() => {
     if (mounted && !isImageLoaded) {
-      const video = document.createElement('video')
-      video.src = "/invitation-design.mp4"
-      video.preload = "auto"
-      video.onloadeddata = () => handleImageLoad()
+      const img = new Image()
+      img.src = "/invitation-design.jpg"
+      img.onload = () => handleImageLoad()
       return () => {
-        video.onloadeddata = null
+        img.onload = null
       }
     }
   }, [mounted, isImageLoaded, handleImageLoad])

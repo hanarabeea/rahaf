@@ -60,9 +60,8 @@ export default function RootLayout({
         {/* Preload critical assets for immediate loading */}
         <link
           rel="preload"
-          href="/invitation-design.mp4"
-          as="video"
-          type="video/mp4"
+          href="/invitation-design.jpg"
+          as="image"
         />
         {/* Preconnect to domains for faster loading */}
         <link rel="preconnect" href="https://maps.googleapis.com" />
