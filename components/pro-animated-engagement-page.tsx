@@ -78,7 +78,7 @@ export default function ProAnimatedEngagementPage({ onImageLoad, isActive = fals
       if (vid && vid.isConnected) {
         vid.play().catch(() => {})
       }
-    }, 200)
+    }, 50)
     return () => clearTimeout(id)
   }, [isActive])
 
@@ -134,37 +134,7 @@ export default function ProAnimatedEngagementPage({ onImageLoad, isActive = fals
         />
       </motion.section>
 
-      {/* Section 1: Our Special Day */}
-      <motion.section
-        className="relative py-16 px-4 md:py-20"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={fadeIn}
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white/50 backdrop-blur-sm border border-white/30 rounded-3xl p-8 md:p-12 shadow-2xl">
-            <motion.div
-              className="text-center mb-8"
-              variants={slideUp}
-            >
-              <div className="w-16 h-px bg-accent/30 mx-auto mb-6" />
-              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-gray-800 leading-tight mb-4">
-                {t('ourSpecialDay')}
-              </h2>
-              <p className="text-lg md:text-xl text-gray-700 font-light max-w-2xl mx-auto">
-                {t('countingMoments')}
-              </p>
-            </motion.div>
-
-            <motion.div variants={scaleIn}>
-              <CountdownTimer targetDate={new Date("2026-06-12T20:00:00+03:00")} />
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Section 2: Join Us At */}
+      {/* Section 1: Join Us At (Location) */}
       <motion.section
         className="relative py-16 px-4 md:py-20"
         initial="hidden"
@@ -234,6 +204,36 @@ export default function ProAnimatedEngagementPage({ onImageLoad, isActive = fals
               </motion.div>
 
 
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Section 2: Our Special Day (Countdown) */}
+      <motion.section
+        className="relative py-16 px-4 md:py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeIn}
+      >
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-white/50 backdrop-blur-sm border border-white/30 rounded-3xl p-8 md:p-12 shadow-2xl">
+            <motion.div
+              className="text-center mb-8"
+              variants={slideUp}
+            >
+              <div className="w-16 h-px bg-accent/30 mx-auto mb-6" />
+              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-gray-800 leading-tight mb-4">
+                {t('ourSpecialDay')}
+              </h2>
+              <p className="text-lg md:text-xl text-gray-700 font-light max-w-2xl mx-auto">
+                {t('countingMoments')}
+              </p>
+            </motion.div>
+
+            <motion.div variants={scaleIn}>
+              <CountdownTimer targetDate={new Date("2026-06-12T20:00:00+03:00")} />
             </motion.div>
           </div>
         </div>
