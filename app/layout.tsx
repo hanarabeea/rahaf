@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description: "Celebrating our wedding - Rahaf & Mohamed",
   applicationName: "digitiva",
   generator: "v0.app",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://rahaf-mohamed.digitivaa.com/'),
+  metadataBase: new URL('https://mohamed-rahaf.digitivaa.com/'),
   openGraph: {
     title: "Welcome to Our Wedding",
     description: "Celebrating our wedding - Rahaf & Mohamed",
@@ -31,9 +31,7 @@ export const metadata: Metadata = {
     siteName: "digitiva",
     images: [
       {
-        url: "/invitation-design.png?v=2",
-        width: 1200,
-        height: 630,
+        url: "/invitation-design.jpg",
         alt: "Wedding Invitation - Rahaf & Mohamed",
       },
     ],
@@ -42,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Welcome to Our Wedding",
     description: "Celebrating our wedding - Rahaf & Mohamed",
-    images: ["/invitation-design.png?v=2"],
+    images: ["/invitation-design.jpg"],
   },
   alternates: {
     canonical: "/",
