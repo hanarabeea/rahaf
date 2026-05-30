@@ -10,6 +10,22 @@ interface VideoIntroProps {
 export default function VideoIntro({ onComplete }: VideoIntroProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const playCountRef = useRef(1)
+
+  const handleVideoEnded = () => {
+    if (playCountRef.current < 5) {
+      playCountRef.current += 1
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0
+        videoRef.current.play().catch((err) => {
+          console.error("Loop play failed:", err)
+          onComplete()
+        })
+      }
+    } else {
+      onComplete()
+    }
+  }
 
   // Ensure vendor-specific inline play attributes are set programmatically
   useEffect(() => {
@@ -42,11 +58,11 @@ export default function VideoIntro({ onComplete }: VideoIntroProps) {
     // Try autoplay immediately
     tryAutoplay();
 
-    // Fallback: if not playing after 4s (slow load or blocked), go to main
+    // Fallback: if not playing after 12s (slow load or blocked), go to main
     const fallbackId = window.setTimeout(() => {
       if (!video.paused && !video.ended) return; // already playing
       onComplete();
-    }, 4000);
+    }, 12000);
 
     // Error handler transitions immediately
     const handleError = () => onComplete();
@@ -112,7 +128,7 @@ export default function VideoIntro({ onComplete }: VideoIntroProps) {
         controls={false}
         disablePictureInPicture
         controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
-        onEnded={onComplete}
+        onEnded={handleVideoEnded}
         onCanPlay={() => {
           // Attempt to start if the browser queued it
           try { videoRef.current?.play(); setIsPlaying(true); } catch {}

@@ -56,14 +56,15 @@ export default function Home() {
   }, [])
 
 
-  // Preload the main image
+  // Preload the main video
   useEffect(() => {
     if (mounted && !isImageLoaded) {
-      const img = new Image()
-      img.src = "/invitation-design.png"
-      img.onload = () => handleImageLoad()
+      const video = document.createElement('video')
+      video.src = "/invitation-design.mp4"
+      video.preload = "auto"
+      video.onloadeddata = () => handleImageLoad()
       return () => {
-        img.onload = null
+        video.onloadeddata = null
       }
     }
   }, [mounted, isImageLoaded, handleImageLoad])
@@ -139,7 +140,7 @@ export default function Home() {
           visibility: showMain ? 'visible' : 'hidden',
         }}
       >
-        <ProAnimatedEngagementPage onImageLoad={handleImageLoad} />
+        <ProAnimatedEngagementPage onImageLoad={handleImageLoad} isActive={showMain} />
         
         {/* Scroll down indicator - only show after video ends */}
         {showMain && (
