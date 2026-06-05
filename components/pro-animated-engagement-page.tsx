@@ -7,7 +7,6 @@ import VenueMap from "@/components/venue-map"
 import Image from "next/image"
 import HandwrittenMessage from "@/components/handwritten-message"
 import RSVPSection from "@/components/rsvp-section"
-import PhotoSharingSection from "@/components/photo-sharing-section"
 import CeremonySection from "@/components/ceremony-section"
 import { Variants } from "framer-motion"
 import { useLanguage } from "@/contexts/language-context"
@@ -406,16 +405,6 @@ export default function ProAnimatedEngagementPage({ onImageLoad, isActive = fals
         variants={fadeIn}
       >
         <RSVPSection />
-      </motion.section>
-
-      {/* Section 7: Share Your Photos */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={fadeIn}
-      >
-        <PhotoSharingSection />
       </motion.section>
 
       {/* Footer */}

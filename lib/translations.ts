@@ -36,7 +36,6 @@ export const translations = {
     clearCanvas: "Clear Canvas",
     sendMessage: "Send Message",
     sending: "Sending...",
-    shareYourPhotos: "Share Your Photos",
 
     // Footer
     cantWaitToCelebrate: "We can't wait to celebrate with you",
@@ -54,16 +53,6 @@ export const translations = {
     submitting: "Submitting...",
     thankYou: "Thank you!",
     weCantWait: "We can't wait to celebrate with you!",
-
-    // Photo sharing
-    shareYourMemories: "Share Your Memories",
-    uploadPhotos: "Upload Photos",
-    selectPhotos: "Select Photos",
-    uploading: "Uploading...",
-    uploadPartyPhotos: "Upload your party photos to our shared album!",
-    openPhotoAlbum: "Open Photo Album",
-    scanQRCode: "Scan QR Code",
-    photoAlbumDescription: "Click the button above or scan the QR code to access our shared Google Drive folder where you can upload all your photos from the celebration!",
 
     // Handwritten message additional
     color: "Color:",
@@ -148,7 +137,6 @@ export const translations = {
     clearCanvas: "مسح الرسم",
     sendMessage: "إرسال الرسالة",
     sending: "جاري الإرسال...",
-    shareYourPhotos: "شارك صورك",
 
     // Footer
     cantWaitToCelebrate: "لا يمكننا الانتظار للاحتفال معكم",
@@ -166,16 +154,6 @@ export const translations = {
     submitting: "جاري الإرسال...",
     thankYou: "شكراً لك!",
     weCantWait: "لا يمكننا الانتظار للاحتفال معكم!",
-
-    // Photo sharing
-    shareYourMemories: "شارك ذكرياتك",
-    uploadPhotos: "رفع الصور",
-    selectPhotos: "اختر الصور",
-    uploading: "جاري الرفع...",
-    uploadPartyPhotos: "ارفع صور الحفلة إلى الألبوم المشترك!",
-    openPhotoAlbum: "فتح ألبوم الصور",
-    scanQRCode: "امسح رمز QR",
-    photoAlbumDescription: "اضغط على الزر أعلاه أو امسح رمز QR للوصول إلى مجلد Google Drive المشترك حيث يمكنك رفع جميع صورك من الاحتفال!",
 
     // Handwritten message additional
     color: "اللون:",
